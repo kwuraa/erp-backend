@@ -11,8 +11,6 @@ app.get("/api/health", (req, res) => {
   });
 });
 
-app.get("/api/hello/:name", ())
-
 app.listen(3000, () => {
   console.log("API rodando em http://localhost:3000");
 });
