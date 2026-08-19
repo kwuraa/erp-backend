@@ -70,6 +70,20 @@ app.post("api/products", (req, res) => {
   };
 
   products.push(newProduct);
+  res.status(201).json(newProduct);
+});
+
+app.delete("api/products/:id", (req, res) => {
+  const id: number = parseInt(req.params.id, 10);
+  const index = products.findIndex((produto) => produto.id === id);
+
+  if (index === -1) {
+    return res.status(404).json({
+      message: "produto não encontrado!!",
+    });
+  }
+  products.splice(index, 1);
+  res.status(204).send();
 });
 
 app.listen(3000, () => {
